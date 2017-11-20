@@ -5,74 +5,89 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: alecott <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/17 09:49:07 by alecott           #+#    #+#             */
-/*   Updated: 2017/11/17 12:50:14 by alecott          ###   ########.fr       */
+/*   Created: 2017/11/20 09:11:26 by alecott           #+#    #+#             */
+/*   Updated: 2017/11/20 16:46:21 by alecott          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-static int	ft_check_placement(size_t i, size_t n, char *str, char *tetri)
+static int	ft_check_placement(size_t x, size_t n, char *str, char *tetri)
 {
-	size_t	j;
+	size_t	i;
 	size_t	y;
 
-	j = 0;
-	y = i;
-	while (tetri[j] && str[i])
+	i = 0;
+	y = x;
+	while (tetri[i] && str[x])
 	{
-		if (tetri[j] == '#' && str[i] == '#')
+		if (ft_isupper(tetri[i]) && ft_isupper(str[x]))
 			return (0);
-		else if (tetri[j] == '\n' && tetri[j++] != '\0')
+		else if (tetri[i] != '\n' && str[x] == '\n')
+			return (0);
+		else if (tetri[i] == '\n' && tetri[i + 1])
 		{
-			i =  n + y;
-			y = i + 1;
+			x = n + y;
+			y = x + 1;
 		}
+		else if (tetri[i] == '\n' && !tetri[i + 1])
+			return (1);
+		x++;
 		i++;
-		j++;
+		if (x >= ft_strlen(str))
+			return (0);
 	}
-	if (i > ft_strlen(str))
-		return (0);
 	return (1);
 }
 
-static char	*ft_placement_tetri(char *str, char *tetri, size_t n)
+static int	ft_gestion_tetri(char *str, char **tetri, size_t n, size_t i)
 {
-	size_t	i;
+	size_t	x;
 
-	i = 0;
-	while (str[i])
+	x = 0;
+	while (str[x])
 	{
-		if (!(ft_check_placement(i, n, str, tetri)) && i == 0)
-			n++;
-		else if (!(ft_check_placement(i, n , str, tetri)) && i != 0)
-			i++;
-		else if (!(ft_check_placement(i, n , str, tetri)) && i != 0 && q)
+		if (str[x] == '\n' && str[x + 1] == '\0')
+		{
+			if (i == 0)
+				return (-1);
+			i--;
+			x = ft_del_last(str, 'A' + i, tetri[i]);
+		}
+		else if (str[x] == '\n')
+			x += n;
+		else if (ft_check_placement(x, n, str, tetri[i]))
+		{
+			str = ft_copy_tetris(str, tetri[i], x, n);
+			return (i);
+		}
+		if (!(x % (n + 1)))
+			x = x / n + 1;
+		else if (x / n == n)
+		{
+			x++;
+			while (str[x] != '\n')
+				x -= n;
+		}
 		else
-			str = ft_tetri_lettres(str, tetri, i, n);
+			x += n;
 	}
-	return (str);
+	return (i);
 }
 
-char	*ft_algo(char *str, char **tab, size_t n)
+char		*ft_algo(char *str, char **tab, size_t n)
 {
 	int		i;
-	int		j;
-	char	c;
+	int		t;
 
-	j = 0;
-	c = 
-	while (tab[j])
+	t = ft_tablen(tab);
+	i = 0;
+	while (i < t)
 	{
-		str = ft_placement_tetri(str, tab[j], n)
-		if (!(ft_verif_tetri()))
-		{
-			
-			
-			
-		}
-		j++;
+		i = ft_gestion_tetri(str, tab, n, i);
+		if (i == -1)
+			return (ft_algo(ft_create_string(n + 1), tab, n + 1));
+		i++;
 	}
 	return (str);
 }
-

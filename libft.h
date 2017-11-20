@@ -6,7 +6,7 @@
 /*   By: alecott <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 08:48:09 by alecott           #+#    #+#             */
-/*   Updated: 2017/11/19 17:03:00 by alecott          ###   ########.fr       */
+/*   Updated: 2017/11/20 16:30:22 by alecott          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,5 +89,6 @@ int				ft_count_words(char const *s, char c);
 int				ft_counter_atoi(int counter, int m, int val);
 void			ft_swapstr(int *s1, int *s2);
 void			ft_swap(int *a, int *b);
+int				ft_isupper(int c);
 
 #endif

@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*   ft_puttab.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alecott <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/20 09:12:15 by alecott           #+#    #+#             */
-/*   Updated: 2017/11/20 09:15:52 by alecott          ###   ########.fr       */
+/*   Created: 2017/11/20 09:12:06 by alecott           #+#    #+#             */
+/*   Updated: 2017/11/20 09:15:39 by alecott          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-size_t	ft_sqrt(size_t n)
+void	ft_puttab(char **tab)
 {
-	size_t	i;
+	int		i;
 
 	i = 0;
-	while (i * i < n)
-		i++;
-	return (i - 1);
+	while (tab[i] != NULL)
+	{
+		ft_putstr(tab[i++]);
+		ft_putchar('\n');
+	}
 }

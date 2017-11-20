@@ -6,7 +6,7 @@
 /*   By: alecott <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/17 12:55:05 by alecott           #+#    #+#             */
-/*   Updated: 2017/11/17 12:55:07 by alecott          ###   ########.fr       */
+/*   Updated: 2017/11/20 16:31:47 by alecott          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 char	*ft_create_string(size_t n)
 {
 	int		i;
-	int		j;
-	int		k;
+	size_t	j;
+	size_t	k;
 	char	*str;
 
 	i = 0;
@@ -37,12 +37,5 @@ char	*ft_create_string(size_t n)
 		j++;
 	}
 	str[i] = '\0';
-	printf("%s", str);
 	return (str);
-}
-
-int		main(int ac, char **av)
-{
-	ft_create_string(4);
-	return (0);
 }

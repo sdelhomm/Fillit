@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psens <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: alecott <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/15 19:16:44 by psens             #+#    #+#             */
-/*   Updated: 2017/11/17 13:30:57 by alecott          ###   ########.fr       */
+/*   Created: 2017/11/20 09:12:50 by alecott           #+#    #+#             */
+/*   Updated: 2017/11/20 16:38:14 by alecott          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	ft_printusage(void)
 {
-	ft_putstr("Ce programme ne fonctionne pas comme ca imbecile..\n");
+	ft_putstr("usage: ./fillit file_path\n");
 }
 
 char		*ft_get_file_content(char *file_path)
@@ -31,30 +31,46 @@ char		*ft_get_file_content(char *file_path)
 	while (read(fd, str, 1))
 		n++;
 	close(fd);
-	str = (char*)ft_memalloc(sizeof(char) * n + 1);
+	str = (char*)ft_memalloc(sizeof(char) * (n + 1));
 	fd = open(file_path, O_RDONLY);
 	read(fd, str, n);
 	close(fd);
 	return (str);
 }
 
+static void	ft_norme(char **tab, size_t field_width)
+{
+	int		i;
+
+	i = 0;
+	while (tab[i] != NULL)
+	{
+		tab[i] = ft_strreplace(tab[i], '#', 'A' + i);
+		i++;
+	}
+	ft_putstr(ft_algo(ft_create_string(field_width), tab, field_width));
+}
+
 int			main(int argc, char **argv)
 {
 	char	*str;
+	char	**tab;
+	size_t	field_width;
 
 	if (argc != 2)
 	{
 		ft_printusage();
 		return (0);
 	}
-	str = ft_get_file_content(argv[1]);     //stocke le contenu du fichier en argument dans str
-	if (!ft_isvalid(str))                   //verifie que str est str est valide
+	str = ft_get_file_content(argv[1]);
+	if (!ft_isvalid(str))
 	{
 		ft_putstr("error\n");
 		return (0);
 	}
-	str = ft_str_cleaner(str);              //range et separe avec strsplit chaque tetriminimos
-//retourner le str sorti par l'algo
-	tab_width = ft_get_min_size(ft_count_tetris(str));
+	field_width = ft_get_min_size(ft_count_tetris(str));
+	str = ft_strcleaner(str, 21);
+	tab = ft_strnsplit(str, '#', 4);
+	ft_norme(tab, field_width);
 	return (0);
 }

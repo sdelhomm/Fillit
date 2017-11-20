@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*   ft_strreplace.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alecott <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/20 09:12:15 by alecott           #+#    #+#             */
-/*   Updated: 2017/11/20 09:15:52 by alecott          ###   ########.fr       */
+/*   Created: 2017/11/20 09:12:33 by alecott           #+#    #+#             */
+/*   Updated: 2017/11/20 09:15:55 by alecott          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-size_t	ft_sqrt(size_t n)
+char	*ft_strreplace(char *str, unsigned char a, unsigned char b)
 {
-	size_t	i;
+	int		i;
 
 	i = 0;
-	while (i * i < n)
+	while (str[i])
+	{
+		if (str[i] == a)
+			str[i] = b;
 		i++;
-	return (i - 1);
+	}
+	return (str);
 }

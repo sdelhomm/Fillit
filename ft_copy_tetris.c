@@ -1,23 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*   ft_copy_tetris.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alecott <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/20 09:12:15 by alecott           #+#    #+#             */
-/*   Updated: 2017/11/20 09:15:52 by alecott          ###   ########.fr       */
+/*   Created: 2017/11/20 09:11:37 by alecott           #+#    #+#             */
+/*   Updated: 2017/11/20 09:11:39 by alecott          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-size_t	ft_sqrt(size_t n)
+char	*ft_copy_tetris(char *str, char *t, size_t x, size_t size)
 {
-	size_t	i;
+	int		i;
+	int		j;
 
 	i = 0;
-	while (i * i < n)
+	j = 0;
+	while (t[j] != '\n')
+		j++;
+	while (t[i] && str[x])
+	{
+		if (t[i] == '.')
+			x++;
+		else if (ft_isupper(t[i]))
+			str[x++] = t[i];
+		else if (t[i] == '\n')
+			x = x + ((size + 1) - j);
 		i++;
-	return (i - 1);
+	}
+	return (str);
 }
