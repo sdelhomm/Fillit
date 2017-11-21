@@ -1,27 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strreplace.c                                    :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alecott <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/21 11:34:56 by alecott           #+#    #+#             */
-/*   Updated: 2017/11/21 11:34:58 by alecott          ###   ########.fr       */
+/*   Created: 2017/11/21 11:35:54 by alecott           #+#    #+#             */
+/*   Updated: 2017/11/21 11:35:58 by alecott          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-char	*ft_strreplace(char *str, unsigned char a, unsigned char b)
+void	ft_putstr(const char *s)
 {
-	int		i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] == a)
-			str[i] = b;
-		i++;
-	}
-	return (str);
+	if (s == NULL)
+		return ;
+	write(1, s, ft_strlen(s));
 }

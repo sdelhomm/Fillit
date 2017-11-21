@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strreplace.c                                    :+:      :+:    :+:   */
+/*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alecott <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/21 11:34:56 by alecott           #+#    #+#             */
-/*   Updated: 2017/11/21 11:34:58 by alecott          ###   ########.fr       */
+/*   Created: 2017/11/21 11:34:05 by alecott           #+#    #+#             */
+/*   Updated: 2017/11/21 11:34:42 by alecott          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-char	*ft_strreplace(char *str, unsigned char a, unsigned char b)
+char	*ft_strsub(const char *s, unsigned int start, size_t len)
 {
-	int		i;
+	char	*str;
 
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] == a)
-			str[i] = b;
-		i++;
-	}
+	if (s == NULL)
+		return (NULL);
+	str = (char*)malloc(sizeof(char) * (len + 1));
+	if (str == NULL)
+		return (NULL);
+	str[len] = '\0';
+	str = ft_strncpy(str, s + start, len);
 	return (str);
 }

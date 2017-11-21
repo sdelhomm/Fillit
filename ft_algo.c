@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: alecott <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/20 09:11:26 by alecott           #+#    #+#             */
-/*   Updated: 2017/11/20 16:46:21 by alecott          ###   ########.fr       */
+/*   Created: 2017/11/21 11:37:22 by alecott           #+#    #+#             */
+/*   Updated: 2017/11/21 11:37:24 by alecott          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-static int	ft_check_placement(size_t x, size_t n, char *str, char *tetri)
+static int		ft_check_placement(size_t x, size_t n, char *str, char *tetri)
 {
 	size_t	i;
 	size_t	y;
@@ -40,42 +40,31 @@ static int	ft_check_placement(size_t x, size_t n, char *str, char *tetri)
 	return (1);
 }
 
-static int	ft_gestion_tetri(char *str, char **tetri, size_t n, size_t i)
+static int		ft_gestion_tetri(char *str, char **tetri, size_t n, size_t i)
 {
 	size_t	x;
 
 	x = 0;
 	while (str[x])
 	{
-		if (str[x] == '\n' && str[x + 1] == '\0')
+		if (str[x] == '\n' && !str[x + 1])
 		{
 			if (i == 0)
 				return (-1);
 			i--;
 			x = ft_del_last(str, 'A' + i, tetri[i]);
 		}
-		else if (str[x] == '\n')
-			x += n;
 		else if (ft_check_placement(x, n, str, tetri[i]))
 		{
 			str = ft_copy_tetris(str, tetri[i], x, n);
 			return (i);
 		}
-		if (!(x % (n + 1)))
-			x = x / n + 1;
-		else if (x / n == n)
-		{
-			x++;
-			while (str[x] != '\n')
-				x -= n;
-		}
-		else
-			x += n;
+		x++;
 	}
 	return (i);
 }
 
-char		*ft_algo(char *str, char **tab, size_t n)
+char			*ft_algo(char *str, char **tab, size_t n)
 {
 	int		i;
 	int		t;

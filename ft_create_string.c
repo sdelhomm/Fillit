@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: alecott <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/17 12:55:05 by alecott           #+#    #+#             */
-/*   Updated: 2017/11/20 16:31:47 by alecott          ###   ########.fr       */
+/*   Created: 2017/11/21 11:36:52 by alecott           #+#    #+#             */
+/*   Updated: 2017/11/21 11:36:54 by alecott          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,26 +15,21 @@
 char	*ft_create_string(size_t n)
 {
 	int		i;
-	size_t	j;
-	size_t	k;
+	int		x;
+	int		y;
 	char	*str;
 
+	str = (char*)malloc(sizeof(char) * (n * (n + 1) + 1));
+	if (str == NULL)
+		return (NULL);
 	i = 0;
-	j = 0;
-	k = 0;
-	str = (char*)malloc(((n * n) + (n + 1)) * sizeof(str));
-	while (j < n)
+	x = 0;
+	while (x++ < n)
 	{
-		k = 0;
-		while (k < n)
-		{
-			str[i] = '.';
-			i++;
-			k++;
-		}
-		str[i] = '\n';
-		i++;
-		j++;
+		y = 0;
+		while (y++ < n)
+			str[i++] = '.';
+		str[i++] = '\n';
 	}
 	str[i] = '\0';
 	return (str);

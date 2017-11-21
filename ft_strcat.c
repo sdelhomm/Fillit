@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strreplace.c                                    :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alecott <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/21 11:34:56 by alecott           #+#    #+#             */
-/*   Updated: 2017/11/21 11:34:58 by alecott          ###   ########.fr       */
+/*   Created: 2017/11/21 11:35:37 by alecott           #+#    #+#             */
+/*   Updated: 2017/11/21 11:35:39 by alecott          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-char	*ft_strreplace(char *str, unsigned char a, unsigned char b)
+char	*ft_strcat(char *s1, char *s2)
 {
 	int		i;
+	int		j;
 
-	i = 0;
-	while (str[i])
+	i = ft_strlen(s1);
+	j = 0;
+	while (s2[j])
 	{
-		if (str[i] == a)
-			str[i] = b;
+		s1[i] = s2[j];
 		i++;
+		j++;
 	}
-	return (str);
+	s1[i] = '\0';
+	return (s1);
 }

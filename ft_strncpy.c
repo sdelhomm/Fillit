@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strreplace.c                                    :+:      :+:    :+:   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alecott <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/21 11:34:56 by alecott           #+#    #+#             */
-/*   Updated: 2017/11/21 11:34:58 by alecott          ###   ########.fr       */
+/*   Created: 2017/11/21 11:35:06 by alecott           #+#    #+#             */
+/*   Updated: 2017/11/21 11:35:09 by alecott          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-char	*ft_strreplace(char *str, unsigned char a, unsigned char b)
+char	*ft_strncpy(char *dst, const char *src, size_t n)
 {
-	int		i;
+	size_t	i;
 
 	i = 0;
-	while (str[i])
+	while (src[i] && i < n)
 	{
-		if (str[i] == a)
-			str[i] = b;
+		dst[i] = src[i];
 		i++;
 	}
-	return (str);
+	while (i < n)
+		dst[i++] = '\0';
+	return (dst);
 }

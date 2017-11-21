@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strreplace.c                                    :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alecott <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/21 11:34:56 by alecott           #+#    #+#             */
-/*   Updated: 2017/11/21 11:34:58 by alecott          ###   ########.fr       */
+/*   Created: 2017/11/21 11:35:18 by alecott           #+#    #+#             */
+/*   Updated: 2017/11/21 11:35:20 by alecott          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-char	*ft_strreplace(char *str, unsigned char a, unsigned char b)
+size_t	ft_strlen(const char *s)
 {
-	int		i;
+	size_t	i;
 
 	i = 0;
-	while (str[i])
-	{
-		if (str[i] == a)
-			str[i] = b;
+	while (s[i])
 		i++;
-	}
-	return (str);
+	return (i);
 }

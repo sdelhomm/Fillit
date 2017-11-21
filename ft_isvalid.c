@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: alecott <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/17 12:54:23 by alecott           #+#    #+#             */
-/*   Updated: 2017/11/17 12:54:47 by alecott          ###   ########.fr       */
+/*   Created: 2017/11/21 11:36:16 by alecott           #+#    #+#             */
+/*   Updated: 2017/11/21 11:36:18 by alecott          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "fillit.h"
 
 static int	ft_istetra(char *str)
 {

@@ -5,37 +5,38 @@
 #                                                     +:+ +:+         +:+      #
 #    By: alecott <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2017/11/20 09:10:56 by alecott           #+#    #+#              #
-#    Updated: 2017/11/20 16:36:45 by alecott          ###   ########.fr        #
+#    Created: 2017/11/21 11:03:18 by alecott           #+#    #+#              #
+#    Updated: 2017/11/21 11:03:20 by alecott          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fillit
 
-SRCS = main.c ft_isvalid.c ft_count_tetris.c ft_create_string.c\
-		ft_get_min_size.c ft_sqrt.c ft_strnsplit.c ft_puttab.c\
-	   	ft_strreplace.c ft_algo.c ft_del_last.c ft_copy_tetris.c ft_tablen.c\
-		ft_strcleaner.c
+FT_SRC = main.c ft_isvalid.c ft_count_tetris.c ft_create_string.c\
+		ft_get_min_size.c ft_sqrt.c ft_strreplace.c ft_algo.c\
+	   	ft_del_last.c ft_copy_tetris.c ft_tablen.c ft_strcleaner.c
 
-OBJS = main.o ft_isvalid.o ft_count_tetris.o ft_create_string.o\
-		ft_get_min_size.o ft_sqrt.o ft_strnsplit.o ft_puttab.o\
-	   	ft_strreplace.o ft_algo.o ft_del_last.o ft_copy_tetris.o ft_tablen.o\
-		ft_strcleaner.o
+LIB = libft.a
 
-LIBS = libft.a
+LIB_SRC = ft_putstr.c ft_isupper.c ft_strsplit.c ft_strsub.c ft_memalloc.c\
+		  ft_strlen.c ft_strcat.c ft_strncpy.c\
 
-HEADS = libft.h fillit.h
+LIB_OBJ = ft_putstr.o ft_isupper.o ft_strsplit.o ft_strsub.o ft_memalloc.o\
+		  ft_strlen.o ft_strcat.o ft_strncpy.o\
 
 all: $(NAME)
 
 $(NAME):
-	@gcc $(SRCS) -L. $(LIBS) -o $(NAME) -Wall -Wextra -Werror
+	@gcc -c $(LIB_SRC) -Werror -Wall -Wextra
+	@ar rc $(LIB) $(LIB_OBJ)
+	@ranlib $(LIB)
+	@gcc $(FT_SRC) -L. $(LIB) -o $(NAME)
 
 clean:
-	@/bin/rm -f $(OBJS)
+	@/bin/rm -f $(LIB_OBJ)
 
 fclean: clean
-	@/bin/rm -f $(NAME)
+	@/bin/rm -f $(NAME) $(LIB)
 
 re: fclean $(NAME)
 

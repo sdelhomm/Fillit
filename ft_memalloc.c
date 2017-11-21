@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strreplace.c                                    :+:      :+:    :+:   */
+/*   ft_memalloc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alecott <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/21 11:34:56 by alecott           #+#    #+#             */
-/*   Updated: 2017/11/21 11:34:58 by alecott          ###   ########.fr       */
+/*   Created: 2017/11/21 11:36:05 by alecott           #+#    #+#             */
+/*   Updated: 2017/11/21 11:36:09 by alecott          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-char	*ft_strreplace(char *str, unsigned char a, unsigned char b)
+void	*ft_memalloc(size_t size)
 {
-	int		i;
+	unsigned char	*tab;
+	size_t			i;
 
 	i = 0;
-	while (str[i])
-	{
-		if (str[i] == a)
-			str[i] = b;
-		i++;
-	}
-	return (str);
+	tab = (unsigned char*)malloc(sizeof(unsigned char) * size);
+	if (tab == NULL)
+		return (NULL);
+	while (i < size)
+		tab[i++] = 0;
+	return (tab);
 }
