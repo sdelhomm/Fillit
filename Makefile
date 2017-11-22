@@ -6,11 +6,13 @@
 #    By: alecott <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/21 11:03:18 by alecott           #+#    #+#              #
-#    Updated: 2017/11/22 09:30:28 by alecott          ###   ########.fr        #
+#    Updated: 2017/11/22 11:12:20 by alecott          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fillit
+
+LIB_NAME = libft.a
 
 FT_SRC = main.c ft_isvalid.c ft_count_tetris.c ft_create_string.c\
 		ft_get_min_size.c ft_sqrt.c ft_strreplace.c ft_algo.c\
@@ -23,18 +25,24 @@ LIB_SRC = ./libft/ft_putstr.c ./libft/ft_isupper.c ./libft/ft_strsplit.c\
 
 INC = fillit.h ./libft/libft.h
 
+LIB_OBJ = ft_putstr.o ft_isupper.o ft_strsplit.o ft_strsub.o ft_memalloc.o\
+		  ft_strlen.o ft_strcat.o ft_strncpy.o ft_bzero.o ft_count_words.o\
+		  ft_memset.o
+
 OBJ = $(FT_SRC:.c=.o) $(LIB_SRC:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(FT_SRC)
-	@gcc $(FT_SRC) $(LIB_SRC) -Werror -Wall -Wextra -o $(NAME)
+	@gcc -c $(LIB_SRC)
+	@ar rc $(LIB_NAME) $(LIB_OBJ)
+	@gcc $(FT_SRC) -L. -lft -Werror -Wall -Wextra -o $(NAME)
 
 clean:
-	@/bin/rm -f $(OBJ)
+	@/bin/rm -f $(OBJ) $(LIB_OBJ)
 
 fclean: clean
-	@/bin/rm -f $(NAME) $(LIB)
+	@/bin/rm -f $(NAME) $(LIB_NAME)
 
 re: fclean $(NAME)
 
