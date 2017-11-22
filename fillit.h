@@ -6,7 +6,11 @@
 /*   By: alecott <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 11:37:31 by alecott           #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2017/11/22 10:03:37 by alecott          ###   ########.fr       */
+=======
+/*   Updated: 2017/11/22 10:08:52 by alecott          ###   ########.fr       */
+>>>>>>> daa05134638a6fd5b29a097d6f129eded3dc1c37
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +18,14 @@
 # define FILLIT_H
 
 # include <fcntl.h>
+<<<<<<< HEAD
 # include <unistd.h>
 # include <stdlib.h>
+=======
+# include <stdlib.h>
+# include <unistd.h>
+
+>>>>>>> daa05134638a6fd5b29a097d6f129eded3dc1c37
 
 char		*ft_copy_tetris(char *str, char *t, size_t x, size_t size);
 int			main(int argc, char **argv);
