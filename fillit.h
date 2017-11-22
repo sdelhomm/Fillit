@@ -6,15 +6,17 @@
 /*   By: alecott <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 11:37:31 by alecott           #+#    #+#             */
-/*   Updated: 2017/11/21 11:37:33 by alecott          ###   ########.fr       */
+/*   Updated: 2017/11/22 10:08:52 by alecott          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FILLIT_H
 # define FILLIT_H
 
-# include "libft.h"
 # include <fcntl.h>
+# include <stdlib.h>
+# include <unistd.h>
+
 
 char		*ft_copy_tetris(char *str, char *t, size_t x, size_t size);
 int			main(int argc, char **argv);
