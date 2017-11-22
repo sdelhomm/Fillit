@@ -6,7 +6,7 @@
 /*   By: alecott <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 11:36:52 by alecott           #+#    #+#             */
-/*   Updated: 2017/11/21 11:36:54 by alecott          ###   ########.fr       */
+/*   Updated: 2017/11/22 09:26:38 by alecott          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 char	*ft_create_string(size_t n)
 {
 	int		i;
-	int		x;
-	int		y;
+	size_t	x;
+	size_t	y;
 	char	*str;
 
 	str = (char*)malloc(sizeof(char) * (n * (n + 1) + 1));

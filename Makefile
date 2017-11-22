@@ -6,7 +6,7 @@
 #    By: alecott <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/21 11:03:18 by alecott           #+#    #+#              #
-#    Updated: 2017/11/21 11:03:20 by alecott          ###   ########.fr        #
+#    Updated: 2017/11/22 09:30:28 by alecott          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,24 +16,22 @@ FT_SRC = main.c ft_isvalid.c ft_count_tetris.c ft_create_string.c\
 		ft_get_min_size.c ft_sqrt.c ft_strreplace.c ft_algo.c\
 	   	ft_del_last.c ft_copy_tetris.c ft_tablen.c ft_strcleaner.c
 
-LIB = libft.a
+LIB_SRC = ./libft/ft_putstr.c ./libft/ft_isupper.c ./libft/ft_strsplit.c\
+		  ./libft/ft_strsub.c ./libft/ft_memalloc.c ./libft/ft_strlen.c\
+		  ./libft/ft_strcat.c ./libft/ft_strncpy.c ./libft/ft_bzero.c\
+		  ./libft/ft_count_words.c ./libft/ft_memset.c
 
-LIB_SRC = ft_putstr.c ft_isupper.c ft_strsplit.c ft_strsub.c ft_memalloc.c\
-		  ft_strlen.c ft_strcat.c ft_strncpy.c\
+INC = fillit.h ./libft/libft.h
 
-LIB_OBJ = ft_putstr.o ft_isupper.o ft_strsplit.o ft_strsub.o ft_memalloc.o\
-		  ft_strlen.o ft_strcat.o ft_strncpy.o\
+OBJ = $(FT_SRC:.c=.o) $(LIB_SRC:.c=.o)
 
 all: $(NAME)
 
-$(NAME):
-	@gcc -c $(LIB_SRC) -Werror -Wall -Wextra
-	@ar rc $(LIB) $(LIB_OBJ)
-	@ranlib $(LIB)
-	@gcc $(FT_SRC) -L. $(LIB) -o $(NAME)
+$(NAME): $(FT_SRC)
+	@gcc $(FT_SRC) $(LIB_SRC) -Werror -Wall -Wextra -o $(NAME)
 
 clean:
-	@/bin/rm -f $(LIB_OBJ)
+	@/bin/rm -f $(OBJ)
 
 fclean: clean
 	@/bin/rm -f $(NAME) $(LIB)
